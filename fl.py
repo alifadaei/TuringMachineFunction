@@ -1,13 +1,9 @@
-from mimetypes import init
-from operator import index
 from termcolor import colored
 import os
 import time
 
-STRING = "B11111B111C1BB"
-DELAY = 0
-
-
+STRING = "B11111B11C1BB"
+DELAY = .5
 def clear(): return os.system('cls')
 
 
@@ -61,7 +57,8 @@ class MultiplingMachine(TuringMachine):
     def next(self):
         value = self.tape[self.index]
         state = self.state
-        # self.print()
+        if DELAY:
+            self.print()
 
         if value == '1' and state == 'q0':
             self.write('1')
@@ -239,7 +236,8 @@ class X5Machine(TuringMachine):
         state = self.state
         value = self.tape[self.index]
 
-        self.print()
+        if DELAY:
+            self.print()
         if value == '1' and state == 'q0':
             self.write('1')
             self.toRight()
@@ -282,6 +280,8 @@ class X5Machine(TuringMachine):
             self.print()
             print('finish')
 
+
+1111111111111111111111111111111
 
 s = list(STRING)
 X5Machine(s, 1).run()
